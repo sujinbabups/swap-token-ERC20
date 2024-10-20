@@ -20,7 +20,7 @@ const Swap = () => {
   const [amount, setAmount] = useState('');
   const [newRate, setNewRate] = useState('');
   const [currentRate, setCurrentRate] = useState('0');
-  const [isOwner, setIsOwner] = useState(false);
+  // const [isOwner, setIsOwner] = useState(false);
   const [loading, setLoading] = useState(false);
   const [signer, setSigner] = useState(null);
 
@@ -44,25 +44,25 @@ const Swap = () => {
     connectWallet();
   }, []);
 
-  const setupExampleRate = async () => {
-    if (!signer) return;
+  // const setupExampleRate = async () => {
+  //   if (!signer) return;
 
-    try {
-      const swapContract = new ethers.Contract(SWAP_CONTRACT_ADDRESS, SwapABI, signer);
+  //   try {
+  //     const swapContract = new ethers.Contract(SWAP_CONTRACT_ADDRESS, SwapABI, signer);
 
-      // Set a more reasonable rate (e.g., 1 GT = 2 ET)
-      const newRate = ethers.parseEther("2");
+  //     // Set a more reasonable rate (e.g., 1 GT = 2 ET)
+  //     const newRate = ethers.parseEther("2");
 
-      console.log("Setting new rate:", ethers.formatEther(newRate));
-      const tx = await swapContract.setExchangeRate(tokens.GT, tokens.ET, newRate);
-      await tx.wait();
+  //     console.log("Setting new rate:", ethers.formatEther(newRate));
+  //     const tx = await swapContract.setExchangeRate(tokens.GT, tokens.ET, newRate);
+  //     await tx.wait();
 
-      console.log("New rate set successfully");
-      await getExchangeRate();
-    } catch (error) {
-      console.error("Error setting example rate:", error);
-    }
-  };
+  //     console.log("New rate set successfully");
+  //     await getExchangeRate();
+  //   } catch (error) {
+  //     console.error("Error setting example rate:", error);
+  //   }
+  // };
 
   const transferTokensToContract = async () => {
     if (!signer) return;
@@ -374,35 +374,6 @@ const Swap = () => {
         </div>
 
         <div className="mb-6">
-          <label className="block text-base font-bold mb-2 text-yellow-400">Amount to Swap</label>
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            className="w-full bg-blue-700 text-yellow-300 p-3 rounded-lg border border-yellow-500 focus:outline-none"
-            placeholder="Enter amount to swap"
-          />
-        </div>
-
-        <button
-          onClick={setupExampleRate}
-          className="w-full bg-blue-600 hover:bg-blue-500 text-lg py-2 rounded-lg font-semibold text-yellow-300 transition duration-300 mt-2"
-        >
-          Set Example Rate (2:1)
-        </button>
-
-        <div className="mb-6">
-          <button
-            onClick={getExchangeRate}
-            className="w-full bg-blue-600 hover:bg-blue-500 text-lg py-2 rounded-lg font-semibold text-yellow-300 transition duration-300"
-          >
-            Get Exchange Rate
-          </button>
-          <p className="text-center mt-2 text-yellow-300">Current Rate: {currentRate}</p>
-        </div>
-
-
-        <div className="mb-6">
           <label className="block text-base font-bold mb-2 text-yellow-400">New Exchange Rate</label>
           <input
             type="text"
@@ -418,6 +389,37 @@ const Swap = () => {
             Set New Rate
           </button>
         </div>
+
+        <div className="mb-6">
+          <label className="block text-base font-bold mb-2 text-yellow-400">Amount to Swap</label>
+          <input
+            type="number"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            className="w-full bg-blue-700 text-yellow-300 p-3 rounded-lg border border-yellow-500 focus:outline-none"
+            placeholder="Enter amount to swap"
+          />
+        </div>
+
+        {/* <button
+          onClick={setupExampleRate}
+          className="w-full bg-blue-600 hover:bg-blue-500 text-lg py-2 rounded-lg font-semibold text-yellow-300 transition duration-300 mt-2"
+        >
+          Set Example Rate (2:1)
+        </button> */}
+
+        {/* <div className="mb-6">
+          <button
+            onClick={getExchangeRate}
+            className="w-full bg-blue-600 hover:bg-blue-500 text-lg py-2 rounded-lg font-semibold text-yellow-300 transition duration-300"
+          >
+            Get Exchange Rate
+          </button>
+          <p className="text-center mt-2 text-yellow-300">Current Rate: {currentRate}</p>
+        </div> */}
+
+
+
 
         <div className="mb-6">
           <button
