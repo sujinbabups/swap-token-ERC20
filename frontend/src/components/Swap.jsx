@@ -391,6 +391,16 @@ const Swap = () => {
         </div>
 
         <div className="mb-6">
+          <button
+            onClick={getExchangeRate}
+            className="w-full bg-blue-600 hover:bg-blue-500 text-lg py-2 rounded-lg font-semibold text-yellow-300 transition duration-300"
+          >
+            Get Exchange Rate
+          </button>
+          <p className="text-center mt-2 text-yellow-300">Current Rate: {currentRate}</p>
+        </div> 
+
+        <div className="mb-6">
           <label className="block text-base font-bold mb-2 text-yellow-400">Amount to Swap</label>
           <input
             type="number"
@@ -408,26 +418,19 @@ const Swap = () => {
           Set Example Rate (2:1)
         </button> */}
 
-        {/* <div className="mb-6">
-          <button
-            onClick={getExchangeRate}
-            className="w-full bg-blue-600 hover:bg-blue-500 text-lg py-2 rounded-lg font-semibold text-yellow-300 transition duration-300"
-          >
-            Get Exchange Rate
-          </button>
-          <p className="text-center mt-2 text-yellow-300">Current Rate: {currentRate}</p>
-        </div> */}
+      
 
 
 
 
         <div className="mb-6">
-          <button
+        
+          {/* <button
             onClick={checkAllowanceAndBalance}
             className="w-full bg-blue-600 hover:bg-blue-500 text-lg py-2 rounded-lg font-semibold text-yellow-300 transition duration-300 mt-2"
           >
             Check Allowance and Balance
-          </button>
+          </button> */}
 
           <div className="mb-6">
             <button
@@ -451,12 +454,12 @@ const Swap = () => {
             Swap Tokens
           </button>
 
-          <button
+          {/* <button
             onClick={checkAndDisplayBalances}
             className="w-full bg-blue-600 hover:bg-blue-500 text-lg py-2 rounded-lg font-semibold text-yellow-300 transition duration-300 mt-2"
           >
             Check All Balances
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
